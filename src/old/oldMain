@@ -1,0 +1,31 @@
+public class Main extends Application {
+    static public int status = 0;
+    public void main(String[] args) {
+        launch(args);
+    }
+    @Override
+    public void start(Stage primaryStage) {
+        //set stage parameters
+        primaryStage.setTitle("CubeAdventure2");
+        primaryStage.setWidth(800);
+        primaryStage.setHeight(600);
+
+        //create all scenes
+        MainMenu.create(primaryStage);
+        BotSelector.create(primaryStage);
+        BotDifficulty.create(primaryStage);
+        old.BotGameplay.create(primaryStage);
+
+        //set scene and start application
+        sceneSwitcher(primaryStage);
+        primaryStage.show();
+    }
+    static public void sceneSwitcher(Stage stage) {
+        switch (status) {
+            case 0 -> stage.setScene(MainMenu.scene);
+            case 10 -> stage.setScene(BotSelector.scene);
+            case 11 -> stage.setScene(BotDifficulty.scene);
+            case 12 -> stage.setScene(old.BotGameplay.scene);
+        }
+    }
+}
